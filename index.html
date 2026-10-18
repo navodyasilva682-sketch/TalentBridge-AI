@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101322" />
+  <title>Nova AI — Gemini Chatbot</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">✦</div>
+        <div><span class="brand-name">nova</span><span class="brand-sub">AI ASSISTANT</span></div>
+      </div>
+      <button class="new-chat-btn" id="newChatBtn"><span>＋</span> New conversation</button>
+      <div class="side-label">YOUR WORKSPACE</div>
+      <div class="history-list" id="historyList"></div>
+      <div class="sidebar-bottom">
+        <div class="model-card"><span class="status-dot"></span><div><strong>Gemini Flash</strong><small>Connected when configured</small></div></div>
+        <button class="side-action" id="settingsBtn">⚙ <span>API settings</span></button>
+        <button class="side-action" id="themeBtn">◐ <span>Toggle appearance</span></button>
+        <p class="privacy-note">Your chats are saved in this browser only.</p>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="icon-btn mobile-menu" id="menuBtn" aria-label="Open menu">☰</button>
+        <div class="topbar-title"><span class="online-indicator"></span> Nova Assistant <span class="model-pill">Gemini Flash</span></div>
+        <div class="topbar-actions">
+          <button class="icon-btn" id="exportBtn" title="Export conversation" aria-label="Export conversation">⇩</button>
+          <button class="icon-btn" id="clearBtn" title="Clear conversation" aria-label="Clear conversation">⌫</button>
+        </div>
+      </header>
+
+      <section class="chat-scroll" id="chatScroll">
+        <div class="welcome" id="welcome">
+          <div class="welcome-orb"><span>✦</span></div>
+          <p class="eyebrow">YOUR CREATIVE THINKING PARTNER</p>
+          <h1>What can I help<br><span>you explore today?</span></h1>
+          <p class="welcome-copy">Ask a question, work through an idea, or turn a blank page into a plan.</p>
+          <div class="suggestion-grid">
+            <button class="suggestion" data-prompt="Explain a difficult topic in simple terms, with an example."><span class="suggestion-icon purple">✧</span><span><strong>Learn something</strong><small>Simple explanations with examples</small></span><span class="arrow">↗</span></button>
+            <button class="suggestion" data-prompt="Help me brainstorm creative ideas for a project."><span class="suggestion-icon blue">✳</span><span><strong>Brainstorm ideas</strong><small>Explore possibilities and concepts</small></span><span class="arrow">↗</span></button>
+            <button class="suggestion" data-prompt="Help me write a clear, professional message."><span class="suggestion-icon orange">✎</span><span><strong>Write something</strong><small>Draft, refine, and improve text</small></span><span class="arrow">↗</span></button>
+            <button class="suggestion" data-prompt="Help me create a practical step-by-step plan for my goal."><span class="suggestion-icon green">⌁</span><span><strong>Make a plan</strong><small>Turn goals into next steps</small></span><span class="arrow">↗</span></button>
+          </div>
+        </div>
+        <div class="messages" id="messages" aria-live="polite"></div>
+      </section>
+
+      <footer class="composer-wrap">
+        <div class="composer" id="composer">
+          <textarea id="messageInput" rows="1" placeholder="Message Nova..." aria-label="Write your message"></textarea>
+          <div class="composer-bottom">
+            <div class="composer-tools">
+              <button class="tool-btn" id="voiceBtn" title="Voice input" aria-label="Voice input">🎙 <span>Voice</span></button>
+              <span class="tool-divider"></span>
+              <span class="composer-hint">Enter to send · Shift + Enter for a new line</span>
+            </div>
+            <button class="send-btn" id="sendBtn" aria-label="Send message"><span>Send</span><b>↑</b></button>
+          </div>
+        </div>
+        <p class="disclaimer">Nova can make mistakes. Check important information independently.</p>
+      </footer>
+    </main>
+  </div>
+
+  <dialog id="settingsDialog" class="settings-dialog">
+    <form method="dialog" class="dialog-head"><div><span class="eyebrow">CONFIGURATION</span><h2>API settings</h2></div><button class="icon-btn" aria-label="Close settings">✕</button></form>
+    <div class="dialog-content">
+      <label for="apiKeyInput">Google Gemini API key</label>
+      <input id="apiKeyInput" type="password" placeholder="Paste your replacement API key" autocomplete="off" />
+      <p class="field-help">This demo keeps the key in memory only until you refresh or close the page. Never publish a browser-based API key in a public website.</p>
+      <label for="modelInput">Model name</label>
+      <input id="modelInput" type="text" value="gemini-flash-latest" spellcheck="false" />
+      <div class="dialog-actions"><button class="secondary-btn" id="forgetKeyBtn" type="button">Forget key</button><button class="primary-btn" id="saveSettingsBtn" type="button">Save settings</button></div>
+      <p id="settingsStatus" class="settings-status" role="status"></p>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
